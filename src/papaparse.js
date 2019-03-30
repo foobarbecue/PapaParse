@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 /* @license
 Papa Parse
 v5.0.0-beta.0
@@ -1192,10 +1194,13 @@ License: MIT
 					return false;
 				else if (FLOAT.test(value))
 					return parseFloat(value);
-				else if (ISO_DATE.test(value))
-					return new Date(value);
-				else
-					return (value === '' ? null : value);
+
+				else {
+					var dateConverted = moment(value);
+					if (dateConverted._isValid)
+						return dateConverted;
+				}
+				return (value === '' ? null : value);
 			}
 			return value;
 		}
