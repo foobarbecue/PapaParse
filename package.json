@@ -1,6 +1,6 @@
 {
 	"name": "@foobarbecue/papaparse",
-	"version": "5.0.0-beta.0",
+	"version": "5.0.4",
 	"description": "Fork of papaparse which accepts a wider range of date formats.",
 	"keywords": [
 		"csv",
@@ -35,7 +35,7 @@
 	},
 	"license": "MIT",
 	"main": "dist/papaparse.js",
-	"browser": "dist/papaparse.min.js",
+	"browser": "dist/papaparse.js",
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
 		"babel-preset-env": "^1.7.0",
@@ -51,16 +51,18 @@
 	},
 	"scripts": {
 		"lint": "eslint --no-ignore src/*.js .eslintrc.js 'tests/**/*.js'",
-		"test-browser": "node tests/test.js",
-		"test-mocha-headless-chrome": "node tests/test.js --mocha-headless-chrome",
-		"test-node": "mocha tests/node-tests.js tests/test-cases.js",
+		"test-browser": "node dist/test.js",
+		"test-mocha-headless-chrome": "node dist/test.js --mocha-headless-chrome",
+		"test-node": "npm run build && mocha dist/node-tests.js dist/test-cases.js",
 		"test": "npm run lint && npm run test-node && npm run test-mocha-headless-chrome",
-		"build": "babel papaparse.js --out-dir dist"
+		"build": "babel src tests --out-dir dist"
 	},
 	"dependencies": {
 		"moment": "^2.24.0"
 	},
 	"babel": {
-		"presets": ["env"]
+		"presets": [
+			"env"
+		]
 	}
 }

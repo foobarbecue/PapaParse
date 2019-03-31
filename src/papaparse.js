@@ -1198,7 +1198,7 @@ License: MIT
 				else {
 					var dateConverted = moment(value);
 					if (dateConverted._isValid)
-						return dateConverted;
+						return dateConverted._d;
 				}
 				return (value === '' ? null : value);
 			}

@@ -1,3 +1,4 @@
+import moment from 'moment'
 var chai;
 var Papa;
 if (typeof module !== 'undefined' && module.exports) {
@@ -947,11 +948,11 @@ var PARSE_TESTS = [
 		}
 	},
 	{
-		description: "Dynamic typing converts ISO date strings to Dates",
+		description: "Dynamic typing converts date strings to Dates using momentjs",
 		input: 'ISO date,long date\r\n2018-05-04T21:08:03.269Z,Fri May 04 2018 14:08:03 GMT-0700 (PDT)\r\n2018-05-08T15:20:22.642Z,Tue May 08 2018 08:20:22 GMT-0700 (PDT)',
 		config: { dynamicTyping: true },
 		expected: {
-			data: [["ISO date", "long date"], [new Date("2018-05-04T21:08:03.269Z"), "Fri May 04 2018 14:08:03 GMT-0700 (PDT)"], [new Date("2018-05-08T15:20:22.642Z"), "Tue May 08 2018 08:20:22 GMT-0700 (PDT)"]],
+			data: [["ISO date", "long date"], [moment("2018-05-04T21:08:03.269Z"),"Fri May 04 2018 14:08:03 GMT-0700 (PDT)"], [moment("2018-05-08T15:20:22.642Z"), "Tue May 08 2018 08:20:22 GMT-0700 (PDT)"]],
 			errors: []
 		}
 	},
